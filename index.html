@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Enhancing Accuracy in Indic Handwritten Text Recognition (CVIP 2024) — a PARSeq-based recognizer for ten Indic scripts, boosted by transfer learning from printed text.">
+  <meta name="keywords" content="Indic handwritten text recognition, OCR, PARSeq, transformer, transfer learning, CVIP 2024">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhancing Accuracy in Indic Handwritten Text Recognition</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Project Styles -->
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <div class="hero-badge">CVIP 2024</div>
+  <h1><span class="highlight">Enhancing Accuracy</span> in Indic Handwritten Text Recognition</h1>
+  <p class="subtitle">A transformer-based recognizer (PARSeq) for handwritten text across ten Indic scripts, boosted by transfer learning from printed text.</p>
+
+  <!-- Authors -->
+  <div class="authors">
+    <span><a href="https://lalithaevani.github.io/" target="_blank">Evani Lalitha</a></span>
+    <span>Ajoy Mondal</span>
+    <span>C. V. Jawahar</span>
+  </div>
+  <div class="affiliation">
+    Centre for Visual Information Technology (CVIT), International Institute of Information Technology, Hyderabad, India
+  </div>
+
+  <!-- Buttons -->
+  <div class="btn-row">
+    <a href="https://link.springer.com/chapter/10.1007/978-3-031-93688-3_17" class="btn btn-primary" target="_blank">
+      <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+    </a>
+    <a href="https://github.com/LalithaEvani/Indic-HTR-CVIP-2024" class="btn" target="_blank">
+      <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+    </a>
+  </div>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <strong>TL;DR</strong> &mdash; We adapt PARSeq, a transformer model originally built for scene-text recognition, to handwritten text across ten Indic scripts (Hindi, Bengali, Telugu, Tamil, Gujarati, Gurumukhi, Odia, Kannada, Malayalam, Urdu), beating prior CNN&ndash;RNN baselines on most languages. Pre-training on printed text before fine-tuning on handwritten text gives a further, consistent accuracy boost.
+  </div>
+
+  <!-- Teaser -->
+  <div class="figure fig-medium" style="margin-top:48px;">
+    <img src="static/images/teaser.png" alt="Map of India showing which Indic script is dominant in which state">
+    <div class="figure-caption"><strong>Figure 1.</strong> India map representing the ten scripts dominantly used in several states.</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card fade-in">
+      <div class="stat-number">10</div>
+      <div class="stat-label">Indic Scripts<br>evaluated</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-number">6.93</div>
+      <div class="stat-label">Best WER %<br>(Hindi)</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-number">0.98</div>
+      <div class="stat-label">Best CER %<br>(Malayalam)</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-number">-73%</div>
+      <div class="stat-label">WER vs. CRNN<br>on Hindi</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════ ABSTRACT ══════════ -->
+<section>
+  <div class="container fade-in">
+    <div class="section-label">Abstract</div>
+    <h2>Bridging Printed and Handwritten Recognition</h2>
+    <p>Handwritten Text Recognition (HTR) presents a significant challenge in computer vision due to various factors such as individual writing styles, noise, blur, and other imperfections in the text. This challenge is further exacerbated when dealing with languages using Indic scripts, characterized by complex character structures, extensive character inventories, and specific cultural nuances. In this study, we address these challenges by focusing on enhancing handwritten text recognition for ten Indic languages: Hindi, Bengali, Telugu, Tamil, Gujarati, Gurumukhi, Oriya, Kannada, Malayalam, and Urdu.</p>
+    <p>We aim to improve recognition accuracy by leveraging the Permuted Autoregressive Sequence Model (PARSeq), an extension of the transformer-based model. Our results demonstrate the superiority of the PARSeq model over existing approaches, particularly in achieving state-of-the-art performance across most languages. Additionally, we investigate the efficacy of transfer learning from printed text to handwritten text, revealing its potential to enhance recognition performance. The trained models and code are publicly available.</p>
+  </div>
+</section>
+
+
+<!-- ══════════ KEY CONTRIBUTIONS ══════════ -->
+<section>
+  <div class="container-wide fade-in">
+    <div class="section-label">Key Contributions</div>
+    <h2>What We Contribute</h2>
+    <div class="accent-cards">
+      <div class="accent-card">
+        <h4>1. Transformer-based Indic HTR</h4>
+        <p>Implement a transformer-based model using PARSeq to enhance recognition accuracy for Indic handwritten text.</p>
+      </div>
+      <div class="accent-card">
+        <h4>2. State-of-the-art comparison</h4>
+        <p>Compare against existing CNN/RNN-based approaches, showcasing state-of-the-art performance across most of the ten languages.</p>
+      </div>
+      <div class="accent-card">
+        <h4>3. Transfer learning from print to handwriting</h4>
+        <p>Investigate the impact of pre-training on printed text before fine-tuning on handwritten text, highlighting its effectiveness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ METHOD ══════════ -->
+<section>
+  <div class="container-wide fade-in">
+    <div class="section-label">Method</div>
+    <h2>PARSeq: Permuted Autoregressive Sequence Model</h2>
+    <p>PARSeq's encoder is a 12-layer Vision Transformer (ViT); its decoder is a single transformer layer trained with permutation language modeling, so it learns to predict output tokens in many different orders rather than strictly left-to-right, letting it draw on bidirectional context at inference time. All models were trained on the IIIT-INDIC-HW-WORDS dataset on four NVIDIA GeForce GTX 1080 Ti GPUs.</p>
+
+    <div class="figure fig-wide">
+      <img src="static/images/parseq-architecture.png" alt="PARSeq architecture diagram">
+      <div class="figure-caption"><strong>Figure 2.</strong> PARSeq architecture. [B], [E], and [P] are beginning-of-sequence (BOS), end-of-sequence (EOS), and padding tokens, respectively. L<sub>ce</sub> is the cross-entropy loss.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ RESULTS ══════════ -->
+<section>
+  <div class="container-wide fade-in">
+    <div class="section-label">Results</div>
+    <h2>Experimental Evaluation</h2>
+    <p>PARSeq is compared against two CNN/RNN-based baselines on the IIIT-INDIC-HW-WORDS dataset across ten Indic languages, using Word Error Rate (WER) and Character Error Rate (CER, both lower is better).</p>
+
+    <h3>Quantitative Comparison</h3>
+    <p class="table-subtitle">WER and CER across languages. Bold indicates our best result.</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th rowspan="2">Language</th><th colspan="2">CRNN</th><th colspan="2">Mondal et al.</th><th colspan="2">Ours (PARSeq)</th></tr>
+          <tr><th>WER&darr;</th><th>CER&darr;</th><th>WER&darr;</th><th>CER&darr;</th><th>WER&darr;</th><th>CER&darr;</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hindi</td><td>26.22</td><td>3.17</td><td>9.06</td><td>1.98</td><td class="cell-highlight">6.93</td><td>2.93</td></tr>
+          <tr><td>Telugu</td><td>23.98</td><td>3.18</td><td>12.11</td><td>2.15</td><td class="cell-highlight">10.37</td><td>2.50</td></tr>
+          <tr><td>Bengali</td><td>15.71</td><td>4.85</td><td class="cell-highlight">12.34</td><td>2.35</td><td>16.35</td><td>4.17</td></tr>
+          <tr><td>Gujarati</td><td>18.59</td><td>2.39</td><td class="cell-highlight">9.21</td><td>1.19</td><td>12.04</td><td>2.74</td></tr>
+          <tr><td>Gurumukhi</td><td>18.37</td><td>3.42</td><td class="cell-highlight">10.77</td><td>2.1</td><td>11.92</td><td>3.24</td></tr>
+          <tr><td>Kannada</td><td>7.65</td><td>1.79</td><td>8.57</td><td>1.01</td><td class="cell-highlight">6.55</td><td>1.13</td></tr>
+          <tr><td>Odia</td><td>19.19</td><td>3</td><td class="cell-highlight">12.32</td><td>1.32</td><td>14.86</td><td>3.38</td></tr>
+          <tr><td>Malayalam</td><td>10.23</td><td>1.92</td><td>9.37</td><td>1.12</td><td class="cell-highlight">5.97</td><td>0.98</td></tr>
+          <tr><td>Tamil</td><td>7.82</td><td>1.92</td><td class="cell-highlight">9.18</td><td>1.25</td><td>8.02</td><td>1.43</td></tr>
+          <tr><td>Urdu</td><td>24.11</td><td>5.07</td><td>18.76</td><td>3.89</td><td class="cell-highlight">17.81</td><td>5.51</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="figure fig-wide" style="margin-top:40px;">
+      <img src="static/images/qualitative.png" alt="Qualitative comparison between CNN-RNN and PARSeq predictions">
+      <div class="figure-caption"><strong>Figure 5.</strong> Qualitative comparison between the CNN&ndash;RNN model and PARSeq across ten Indic languages. Ground truth text is highlighted in blue, while incorrectly recognized text is highlighted in red.</div>
+    </div>
+
+    <h3>Ablation Study: Effect of Transfer Learning</h3>
+    <p class="table-subtitle">Word Error Rate with vs. without pre-training on printed text before training on handwritten text. Bold indicates the best result.</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Language</th><th>Trained model</th><th>Pre-trained + Trained model</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bengali</td><td>23.69</td><td class="cell-highlight">19.08</td></tr>
+          <tr><td>Gujarati</td><td>17.69</td><td class="cell-highlight">12.32</td></tr>
+          <tr><td>Gurumukhi</td><td>14.63</td><td class="cell-highlight">11.92</td></tr>
+          <tr><td>Kannada</td><td>11.59</td><td class="cell-highlight">7.28</td></tr>
+          <tr><td>Odia</td><td>21.03</td><td class="cell-highlight">16.78</td></tr>
+          <tr><td>Malayalam</td><td>10.49</td><td class="cell-highlight">5.97</td></tr>
+          <tr><td>Tamil</td><td>9.82</td><td class="cell-highlight">8.02</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ CITATION ══════════ -->
+<section>
+  <div class="container fade-in">
+    <div class="section-label">Citation</div>
+    <h2>BibTeX</h2>
+    <div class="bibtex-block" id="bibtex">
+      <button class="copy-btn" onclick="copyBibtex()">Copy</button>@inproceedings{evani2024indichtr,
+  abbr      = {CVIP},
+  title     = {Enhancing Accuracy in Indic Handwritten Text Recognition},
+  author    = {Evani, Lalitha and Mondal, Ajoy and Jawahar, C. V.},
+  booktitle = {International Conference on Computer Vision and Image Processing (CVIP)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {2473},
+  pages     = {234--248},
+  publisher = {Springer Nature Switzerland},
+  year      = {2024},
+  doi       = {10.1007/978-3-031-93688-3_17},
+  url       = {https://link.springer.com/chapter/10.1007/978-3-031-93688-3_17}
+}</div>
+  </div>
+</section>
+
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="template-credit">
+      <p class="template-line">Want a project page like this?</p>
+      <a href="https://github.com/seemandhar/paper-template" target="_blank" class="template-btn">
+        <i class="fab fa-github"></i><span>Use this template</span>
+        <i class="fas fa-arrow-right" style="font-size:11px;opacity:0.6;"></i>
+      </a>
+      <p class="template-desc">Free, responsive, built for CVPR / ICCV / ECCV / NeurIPS project pages.</p>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-legal">
+      Template by <a href="https://seemandhar.github.io/" target="_blank">Seemandhar Jain</a>.
+      Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+
+
+<!-- PDF Viewer Modal (kept for template compatibility; unused since Paper links out to Springer) -->
+<div class="pdf-overlay" id="pdfOverlay">
+  <div class="pdf-toolbar">
+    <div class="pdf-title" id="pdfTitle">Paper</div>
+    <div class="pdf-toolbar-actions">
+      <a class="pdf-toolbar-btn" id="pdfDownload" href="#" download>
+        <i class="fas fa-download"></i><span class="btn-label">Download</span>
+      </a>
+      <a class="pdf-toolbar-btn" id="pdfNewTab" href="#" target="_blank">
+        <i class="fas fa-external-link-alt"></i><span class="btn-label">Open in Tab</span>
+      </a>
+      <button class="pdf-toolbar-btn close-btn" onclick="closePDF()" aria-label="Close">&times;</button>
+    </div>
+  </div>
+  <iframe class="pdf-viewer-frame" id="pdfFrame" src=""></iframe>
+</div>
+
+<script src="static/js/main.js"></script>
+</body>
+</html>
