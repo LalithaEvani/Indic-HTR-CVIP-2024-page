@@ -42,6 +42,9 @@
     <a href="https://github.com/LalithaEvani/Indic-HTR-CVIP-2024" class="btn" target="_blank">
       <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
     </a>
+    <a href="https://cvit.iiit.ac.in/research/projects/cvit-projects/iiit-indic-hw-words" class="btn" target="_blank">
+      <span class="icon"><i class="fas fa-database"></i></span><span>Dataset</span>
+    </a>
   </div>
 
   <!-- TL;DR -->
@@ -112,7 +115,7 @@
   <div class="container-wide fade-in">
     <div class="section-label">Method</div>
     <h2>PARSeq: Permuted Autoregressive Sequence Model</h2>
-    <p>PARSeq's encoder is a 12-layer Vision Transformer (ViT); its decoder is a single transformer layer trained with permutation language modeling, so it learns to predict output tokens in many different orders rather than strictly left-to-right, letting it draw on bidirectional context at inference time. All models were trained on the IIIT-INDIC-HW-WORDS dataset on four NVIDIA GeForce GTX 1080 Ti GPUs.</p>
+    <p>PARSeq's encoder is a 12-layer Vision Transformer (ViT); its decoder is a single transformer layer trained with permutation language modeling, so it learns to predict output tokens in many different orders rather than strictly left-to-right, letting it draw on bidirectional context at inference time. All models were trained on the <a href="https://cvit.iiit.ac.in/research/projects/cvit-projects/iiit-indic-hw-words" target="_blank">IIIT-INDIC-HW-WORDS</a> dataset on four NVIDIA GeForce GTX 1080 Ti GPUs.</p>
 
     <div class="figure fig-wide">
       <img src="static/images/parseq-architecture.png" alt="PARSeq architecture diagram">
